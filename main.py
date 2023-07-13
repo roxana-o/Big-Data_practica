@@ -14,12 +14,12 @@ df = spark.read.options(header='True', inferSchema='True') \
 # df.show(truncate=False)
 
 # Grupare studenti in functie de codurile tarilor, numararea acestora pentru fiecare caz si ordonarea crescatoare dupa coduri
-df2 = df.groupby("Receiving Country Code", "Sending Country Code") \
+df2 = df.groupBy("Receiving Country Code", "Sending Country Code") \
                 .agg(count("*")) \
                 .orderBy("Receiving Country Code", "Sending Country Code")
 
-# Afisare finala
-df2.show(df.count())
+# Filtrare dupa coduri tari (daca sunt LV MK MT)
+df2_filtrat = df2.filter(df2['Receiving Country Code'].isin('LV', 'MK', 'MT'))
 
-# Verificare numar de randuri (in acest caz 3184 - coincide cu cel din Excel)
-print(df.count())
+# Afisare finala
+df2_filtrat.show(df2_filtrat.count())
