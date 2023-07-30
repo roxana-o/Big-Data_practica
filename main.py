@@ -12,7 +12,7 @@ spark = SparkSession.builder.master("local[1]")\
 
 # Citire fisier Erasmus.csv intr-un DataFrame
 df = spark.read.options(header='True', inferSchema='True') \
-            .csv("C:/Users/user/Desktop/IBM practica/Erasmus.csv")
+            .csv('templates/Erasmus.csv')
 
 # Afisare continut initial (fara a trunchia)
 # df.show(truncate=False)
