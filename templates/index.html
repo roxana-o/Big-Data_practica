@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Erasmus Information</h1>
+        <table>
+            <tr>
+                <th>Receiving Country</th>
+                <th>Sending Country</th>
+                <th>Count</th>
+            </tr>
+            {% for row in results %}
+                <tr>
+                    <td>{{ row['Receiving Country Code'] }}</td>
+                    <td>{{ row['Sending Country Code'] }}</td>
+                    <td>{{ row['Count'] }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
